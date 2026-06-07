@@ -1,0 +1,14 @@
+# SQLite
+*.db
+*.db-shm
+*.db-wal
+
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+*.log
+npm-debug.log*
