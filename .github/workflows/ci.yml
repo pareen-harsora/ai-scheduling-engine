@@ -7,8 +7,11 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  build-client:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: client
 
     steps:
       - name: Checkout code
@@ -19,8 +22,26 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      - name: Install client dependencies
         run: npm install
 
-      - name: Build
+      - name: Build client
         run: npm run build --if-present
+
+  build-server:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install server dependencies
+        run: npm install
